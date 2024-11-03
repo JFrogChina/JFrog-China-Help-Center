@@ -1,32 +1,45 @@
-**Linux Archive 方式安装 Artifactory 单点**
+# Linux Archive 方式安装 Artifactory 单点
 
-**1\. 下载安装包**  
-1\) 安装包下载地址：[https://jfrog.com/download-jfrog-platform/](https://jfrog.com/download-jfrog-platform/)  
+## 下载安装包  
+**1. 安装包下载地址：**  
+[https://jfrog.com/download-jfrog-platform/](https://jfrog.com/download-jfrog-platform/)  
 ![][image1]  
-您可下载最新版或指定历史版本（建议安装最新版）。  
-2\) 您也可在服务器上直接下载安装包，以 7.71.11 为例：
+您可下载最新版或指定历史版本（建议安装最新版）。   
 
-| $ wget https://releases.jfrog.io/artifactory/artifactory-pro/org/artifactory/pro/jfrog-artifactory-pro/7.71.11/jfrog-artifactory-pro-7.71.11-linux.tar.gz |
-| :---- |
+您也可在服务器上直接下载安装包，以 7.71.11 为例：
+```bash
+wget https://releases.jfrog.io/artifactory/artifactory-pro/org/artifactory/pro/jfrog-artifactory-pro/7.71.11/jfrog-artifactory-pro-7.71.11-linux.tar.gz
+```
 
-**2\. 创建安装目录，并解压安装包**  
+**2. 创建安装目录，并解压安装包：**  
 (安装路径以 /root/jfrog/ 为例)
+```bash
+mkdir /root/jfrog
+mv jfrog-artifactory-pro-7.71.11-linux.tar.gz /root/jfrog/
+cd /root/jfrog
+tar -xvf jfrog-artifactory-pro-7.71.11-linux.tar.gz
+mv artifactory-pro-7.71.11 artifactory
+```
 
-| $ mkdir /root/jfrog $ mv jfrog-artifactory-pro-7.71.11-linux.tar.gz /root/jfrog/ $ cd /root/jfrog $ tar \-xvf jfrog-artifactory-pro-7.71.11-linux.tar.gz $ mv artifactory-pro-7.71.11 artifactory |
-| :---- |
-
-**3.配置数据库**  
+**3.配置数据库：**  
 (可选。以 MySQL 为例, 其他配置参考 [**《Artifactory 安装 \- 数据库配置》**](https://www.jfrogchina.com/docs/artifactory-install-db/))  
 如当前没有数据库，通过如下语句创建：
-
-| CREATE DATABASE artdb CHARACTER SET utf8 COLLATE utf8\_bin; CREATE USER 'artifactory'@'%' IDENTIFIED BY 'password'; GRANT ALL on artdb.\* TO 'artifactory'@'%'; FLUSH PRIVILEGES; |
-| :---- |
+```sql
+CREATE DATABASE artdb CHARACTER SET utf8 COLLATE utf8_bin;
+CREATE USER 'artifactory'@'%' IDENTIFIED BY 'password';
+GRANT ALL on artdb.* TO 'artifactory'@'%';
+FLUSH PRIVILEGES;
+```
 
 下载 MySQL jdbc jar 包，并拷贝至 /root/jfrog/artifactory/var/bootstrap/artifactory/tomcat/lib/:  
 (下载地址：[https://dev.mysql.com/downloads/connector/j/](https://dev.mysql.com/downloads/connector/j/)), 如：
 
 | $ wget [https://downloads.mysql.com/archives/get/p/3/file/mysql-connector-java-8.0.13.tar.gz](https://downloads.mysql.com/archives/get/p/3/file/mysql-connector-java-8.0.13.tar.gz) $ tar zxf mysql-connector-java-8.0.13.tar.gz $ cp mysql-connector-java-8.0.13/mysql-connector-java-8.0.13.jar /root/jfrog/artifactory/var/bootstrap/artifactory/tomcat/lib/ |
 | :---- |
+```bash
+wget https://downloads.mysql.com/archives/get/p/3/file/mysql-connector-java-8.0.13.tar.gz
+
+```
 
 修改数据库配置：  
 编辑配置文件 /root/jfrog/artifactory/var/etc/system.yaml, 添加 database 部分，完整示例如下:
