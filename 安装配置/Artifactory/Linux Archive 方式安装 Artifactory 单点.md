@@ -54,9 +54,9 @@ shared:
         username: artifactory
         password: password
 ```
-<small>说明：</small>  
-<small>shared.node.id:  自定义，如 art1, art2…</small>   
-<small>shared.node.ip:  本机 IP, 如 192.168.56.13</small>   
+说明：   
+shared.node.id:  自定义，如 art1, art2…   
+shared.node.ip:  本机 IP, 如 192.168.56.13   
 
 **4. 配置存储**  
 (可选。以 本地存储 为例, 如不配置，默认存储在安装目录 /root/jfrog/artifactory/data/，其他存储方式请参考[**《Artifactory 安装 \- 存储配置》**](https://www.jfrogchina.com/docs/artifactory-install/))  
@@ -71,8 +71,8 @@ shared:
 </config>
 
 ```
-<small>说明：  
-fileStoreDir: 二进制文件存储实际目录, 请根据实际路径进行配置</small>
+说明：  
+fileStoreDir: 二进制文件存储实际目录, 请根据实际路径进行配置  
 
 **5. 启动 Artifactory**
 ```bash
