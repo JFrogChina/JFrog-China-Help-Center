@@ -3,7 +3,6 @@
 ## 下载安装包  
 **1. 安装包下载地址：**  
 [https://jfrog.com/download-jfrog-platform/](https://jfrog.com/download-jfrog-platform/)  
-![][image1]  
 ![image1](images/Linux_archive_single_node_installation_1.png)``
 您可下载最新版或指定历史版本（建议安装最新版）。   
 
@@ -95,10 +94,7 @@ tail -f /root/jfrog/artifactory/var/log/console.log
 **7. 访问页面**  
 [http://192.168.56.13:8082](http://192.168.56.13:8082)  
 默认用户名密码: admin/password  
-![][image2]
 ![image2](images/Linux_archive_single_node_installation_2.png)``
 
 提示：  
 进入页面后需填写 License，您可联系 JFrog 商务以获取。
-
-[image1]: <data:images/Linux_archive_single_node_installation_1.png>
